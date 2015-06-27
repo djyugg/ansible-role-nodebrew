@@ -1,6 +1,6 @@
 nodebrew
 =========
-
+[![Build Status](https://travis-ci.org/djyugg/ansible-role-nodebrew.svg?branch=master)](https://travis-ci.org/djyugg/ansible-role-nodebrew)  
 install nodebrew and node.js.
 
 Role Variables
