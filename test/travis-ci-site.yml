@@ -1,0 +1,9 @@
+- hosts: 127.0.0.1
+  connection: local
+  sudo: yes
+  user: travis
+  roles:
+    - role: djyugg.nodebrew
+      nodebrew:
+        nodejs_version: v0.10.25
+        install_user: travis
