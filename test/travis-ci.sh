@@ -3,7 +3,7 @@
 ROLE_DIR="./test/roles/djyugg.nodebrew"
 
 # 戻り値が0以外であれば処理終了
-function check_return_code(){
+check_return_code(){
   if [ $? -ne 0 ]; then
     exit 1
   fi
