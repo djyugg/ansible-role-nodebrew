@@ -14,7 +14,7 @@ Example Playbook
     - hosts: servers
       vars:
         nodebrew:
-          nodejs_version: v.0.10.25
+          nodejs_version: v0.10.25
           install_user: vagrant
       roles:
          - role: djyugg.nodebrew
