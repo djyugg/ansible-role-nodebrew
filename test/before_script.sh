@@ -14,6 +14,3 @@ fi
 for dir in "defaults handlers meta tasks templates";
   do cp -pR ${dir} ${ROLE_DIR};
 done
-
-# CI用インベントリファイルの生成
-echo "172.0.0.1" > ${WORK_DIR}/hosts
