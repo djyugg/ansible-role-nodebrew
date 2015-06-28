@@ -4,6 +4,11 @@ python:
   - "2.7"
 install:
   - pip install ansible
-script:
+before_script:
   - ansible --version
-  - sh ./test/travis-ci.sh
+  - sh ./test/before_script.sh
+script:
+  - ansible-playbook --syntax-check ./test/travis-ci-site.yml -i ./test/hosts
+  - ansible-playbook ./test/travis-ci-site.yml -i ./test/hosts
+after_success:
+  - sh ./test/test.sh
