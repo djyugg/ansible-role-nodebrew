@@ -10,5 +10,4 @@ before_script:
 script:
   - ansible-playbook --syntax-check ./test/travis-ci-site.yml -i ./test/hosts
   - ansible-playbook ./test/travis-ci-site.yml -i ./test/hosts
-after_success:
   - sh ./test/test.sh
