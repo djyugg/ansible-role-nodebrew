@@ -1,13 +1,20 @@
 ---
 # tasks file for djyugg.nodebrew
 
+- name: check installed nodebrew
+  command: which nodebrew
+  ignore_errors: True
+  register: nodebrew_installed
+
 - name: install nodebrew
   shell: curl -L git.io/nodebrew | perl - setup
   sudo_user: "{{ nodebrew.install_user }}"
+  when: nodebrew_installed|failed
 
 - name: put nodebrew path setting script
   template: src=nodebrew.sh.j2 dest=/etc/profile.d/nodebrew.sh owner=root group=root mode=0755
   sudo: true
+  when: nodebrew_installed|failed
 
 - name: install node.js
   shell: $SHELL -lc "nodebrew install-binary {{ nodebrew.nodejs_version }}"
