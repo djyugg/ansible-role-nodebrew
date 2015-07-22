@@ -16,12 +16,25 @@
   sudo: true
   when: nodebrew_installed|failed
 
+- name: check installed node.js
+  command: which node
+  ignore_errors: True
+  register: nodejs_installed
+
+- name: check installed node.js version
+  command: nodebrew ls | grep {{ nodebrew.nodejs_version }}
+  ignore_errors: True
+  when: nodejs_installed|failed
+  register: nodejs_target_version_exist
+
 - name: install node.js
   shell: $SHELL -lc "nodebrew install-binary {{ nodebrew.nodejs_version }}"
   sudo: true
   sudo_user: "{{ nodebrew.install_user }}"
+  when: nodejs_target_version_exist|failed
 
 - name: select node.js version
   shell: $SHELL -lc "nodebrew use {{ nodebrew.nodejs_version }}"
   sudo: true
   sudo_user: "{{ nodebrew.install_user }}"
+  when: nodejs_target_version_exist|failed
