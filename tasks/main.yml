@@ -27,7 +27,7 @@
   shell: $SHELL -lc "nodebrew ls | grep {{ nodebrew.nodejs_version }}"
   sudo_user: "{{ nodebrew.install_user }}"
   ignore_errors: True
-  when: nodejs_installed|failed
+  when: nodejs_installed|success
   register: nodejs_target_version_exist
 
 - name: install node.js
