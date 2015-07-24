@@ -34,7 +34,7 @@
   shell: $SHELL -lc "nodebrew install-binary {{ nodebrew.nodejs_version }}"
   sudo: true
   sudo_user: "{{ nodebrew.install_user }}"
-  when: nodejs_target_version_exist|failed
+  when: (nodejs_installed|failed) or (nodejs_target_version_exist|failed)
 
 - name: select node.js version
   shell: $SHELL -lc "nodebrew use {{ nodebrew.nodejs_version }}"
