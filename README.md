@@ -5,7 +5,7 @@ install nodebrew and node.js.
 
 Role Variables
 --------------
-- `nodebrew_nodejs_version`: install node.js version. (default: v0.10.25)
+- `nodebrew_nodejs_version`: install node.js version. (default: v0.12.7)
 - `nodebrew_install_user`: nodebrew install user. (default: vagrant) 
 
 Example Playbook
