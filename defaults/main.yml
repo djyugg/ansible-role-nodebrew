@@ -1,6 +1,5 @@
 ---
 # defaults file for djyugg.nodebrew
 
-nodebrew:
-  nodejs_version: v0.10.25
-  install_user: vagrant
+nodebrew_nodejs_version: v0.12.7
+nodebrew_install_user: vagrant

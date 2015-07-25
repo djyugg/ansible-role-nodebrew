@@ -3,13 +3,13 @@
 
 - name: check installed nodebrew
   shell: $SHELL -lc "which nodebrew"
-  sudo_user: "{{ nodebrew.install_user }}"
+  sudo_user: "{{ nodebrew_install_user }}"
   ignore_errors: True
   register: nodebrew_installed
 
 - name: install nodebrew
   shell: curl -L git.io/nodebrew | perl - setup
-  sudo_user: "{{ nodebrew.install_user }}"
+  sudo_user: "{{ nodebrew_install_user }}"
   when: nodebrew_installed|failed
 
 - name: put nodebrew path setting script
@@ -19,24 +19,24 @@
 
 - name: check installed node.js
   shell: $SHELL -lc "which node"
-  sudo_user: "{{ nodebrew.install_user }}"
+  sudo_user: "{{ nodebrew_install_user }}"
   ignore_errors: True
   register: nodejs_installed
 
 - name: check installed node.js version
-  shell: $SHELL -lc "nodebrew ls | grep {{ nodebrew.nodejs_version }}"
-  sudo_user: "{{ nodebrew.install_user }}"
+  shell: $SHELL -lc "nodebrew ls | grep {{ nodebrew_nodejs_version }}"
+  sudo_user: "{{ nodebrew_install_user }}"
   ignore_errors: True
   when: nodejs_installed|success
   register: nodejs_target_version_exist
 
 - name: install node.js
-  shell: $SHELL -lc "nodebrew install-binary {{ nodebrew.nodejs_version }}"
+  shell: $SHELL -lc "nodebrew install-binary {{ nodebrew_nodejs_version }}"
   sudo: true
-  sudo_user: "{{ nodebrew.install_user }}"
+  sudo_user: "{{ nodebrew_install_user }}"
   when: (nodejs_installed|failed) or (nodejs_target_version_exist|failed)
 
 - name: select node.js version
-  shell: $SHELL -lc "nodebrew use {{ nodebrew.nodejs_version }}"
+  shell: $SHELL -lc "nodebrew use {{ nodebrew_nodejs_version }}"
   sudo: true
-  sudo_user: "{{ nodebrew.install_user }}"
+  sudo_user: "{{ nodebrew_install_user }}"

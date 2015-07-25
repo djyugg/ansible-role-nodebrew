@@ -4,6 +4,5 @@
   user: travis
   roles:
     - role: djyugg.nodebrew
-      nodebrew:
-        nodejs_version: v0.10.25
-        install_user: travis
+      nodebrew_nodejs_version: v0.10.25
+      nodebrew_install_user: travis
