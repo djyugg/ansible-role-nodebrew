@@ -40,3 +40,8 @@
   shell: $SHELL -lc "nodebrew use {{ nodebrew_nodejs_version }}"
   sudo: true
   sudo_user: "{{ nodebrew_install_user }}"
+
+- name: npm update
+  shell: $SHELL -lc "npm update -g npm"
+  sudo_user: "{{ nodebrew_install_user }}"
+  when: nodebrew_npm_update

@@ -3,3 +3,4 @@
 
 nodebrew_nodejs_version: v0.12.7
 nodebrew_install_user: vagrant
+nodebrew_npm_update: False
